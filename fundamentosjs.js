@@ -56,132 +56,149 @@ edades = [40, 50, 60]
 console.log(edades)
 */
 
-const edades = [10, 20, 30];
-edades.push(50);
-console.log(edades);
+// const edades = [10, 20, 30];
+// edades.push(50);
+// console.log(edades);
 
-const persona = {
-  nombre: "Roberto",
-  apellido: "Morales",
-  edad: 32
-};
+// const persona = {
+//   nombre: "Roberto",
+//   apellido: "Morales",
+//   edad: 32
+// };
 
-persona.edad = 33;
-persona.nombre = "Sergio";
-console.log(persona);
+// persona.edad = 33;
+// persona.nombre = "Sergio";
+// console.log(persona);
 
-// Funciones
+// // Funciones
 
-/*
-function sumar(num1, num2) {
-  console.log(num1 + num2);
-}
-*/
+// /*
+// function sumar(num1, num2) {
+//   console.log(num1 + num2);
+// }
+// */
 
-//sumar(10, 20)
-//const s = sumar;
-//s(10, 20);
+// //sumar(10, 20)
+// //const s = sumar;
+// //s(10, 20);
 
-// Función Flecha
-const sumar = (num1, num2) => {
-  console.log(num1 + num2);
-};
-//sumar(10, 20)
+// // Función Flecha
+// const sumar = (num1, num2) => {
+//   console.log(num1 + num2);
+// };
+// //sumar(10, 20)
 
-const sumarDos = num1 => {
-  console.log(num1);
-};
+// const sumarDos = num1 => {
+//   console.log(num1);
+// };
 
-const sumarDos2 = () => {
-  console.log('No tiene parámetros');
-};
+// const sumarDos2 = () => {
+//   console.log('No tiene parámetros');
+// };
 
-//sumarDos(50);
+// //sumarDos(50);
 
-/*const sumarTres = num1 =>{
-  return num1
-}
-console.log(sumarTres(5))
-*/
+// /*const sumarTres = num1 =>{
+//   return num1
+// }
+// console.log(sumarTres(5))
+// */
 
-const SumarTres = num1 => num1 * 4
+// const SumarTres = num1 => num1 * 4
 
-console.log(SumarTres(5))
+// console.log(SumarTres(5))
 
-const sumarCuatro = (num1, num2) => {
-  return 'La suma es: ' + (num1 + num2)
-}
+// const sumarCuatro = (num1, num2) => {
+//   return 'La suma es: ' + (num1 + num2)
+// }
 
-console.log(sumarCuatro(10, 20))
+// console.log(sumarCuatro(10, 20))
 
-const sumarCinco = (num1, num2) => 'La suma es: '+(num1 + num2)
+// const sumarCinco = (num1, num2) => 'La suma es: '+(num1 + num2)
 
 
-console.log(sumarCinco(10, 20))
+// console.log(sumarCinco(10, 20))
 
 
 // Template String
 
-const numero = (num) => {
-  return "el número es: " + num;
-};
+// const numero = (num) => {
+//   return "el número es: " + num;
+// };
 
-const resultado = numero(10)
-console.log(resultado)
+// const resultado = numero(10)
+// console.log(resultado)
 
-//backtick
-const numero2 = (num) => {
-  return `el número es: ${num}`;
-};
+// //backtick
+// const numero2 = (num) => {
+//   return `el número es: ${num}`;
+// };
 
-// Destructuring Objects
+// // Destructuring Objects
 
-const mascota = {
-  nombre: 'Tom',
-  edad: 10,
-  vivo: true,
-  razas: ['peludo', 'negro']
-}
+// const mascota = {
+//   nombre: 'Tom',
+//   edad: 10,
+//   vivo: true,
+//   razas: ['peludo', 'negro']
+// }
 
-console.log(mascota.razas[0])
-console.log(mascota.nombre)
+// console.log(mascota.razas[0])
+// console.log(mascota.nombre)
 
-const {nombre, vivo, razas} = mascota
-console.log(nombre)
-console.log(vivo)
-console.log(razas[0])
+// const {nombre, vivo, razas} = mascota
+// console.log(nombre)
+// console.log(vivo)
+// console.log(razas[0])
 
-const web = {
-  nombre: 'certika.co',
-  links: {
-    enlace: 'www.certika.co'
-  },
-  redesSociales:{
-    youtube:{
-      enlace: 'youtube.com/certika',
-      nombre: 'certika yb'
-    },
-    facebook:{
-      enlace: 'facebook.com/certika',
-      nombre: 'Certika fb'
-    }
+// const web = {
+//   nombre: 'certika.co',
+//   links: {
+//     enlace: 'www.certika.co'
+//   },
+//   redesSociales:{
+//     youtube:{
+//       enlace: 'youtube.com/certika',
+//       nombre: 'certika yb'
+//     },
+//     facebook:{
+//       enlace: 'facebook.com/certika',
+//       nombre: 'Certika fb'
+//     }
+//   }
+// }
+
+// const enlaceYT = web.redesSociales.youtube.enlace
+// console.log(enlaceYT)
+// const {enlace} = web.redesSociales.youtube
+// const {redesSociales} = web
+// console.log(redesSociales.youtube.enlace)
+
+
+// Promesa
+
+// fetch ('https://pokeapi.co/api/v2/pokemon/')
+
+// .then(res => res.json())
+// .then( data => {
+//   data.results.forEach(Element => {
+//     console.log(Element)
+//   });
+// });
+
+// async away
+
+const obtenerPersonajes = async ()=> {
+  try{
+    const res = await fetch("https://rickandmortyapi.com/api/character");
+    const data = await res.json()
+    const results = await data.results;
+    const personajesMujeres = results.filter(p => p.gender === 'Female');
+
+    console.log(results)
+
+  }catch(error){
+    console.log(error)
   }
 }
-
-const enlaceYT = web.redesSociales.youtube.enlace
-console.log(enlaceYT)
-const {enlace} = web.redesSociales.youtube
-const {redesSociales} = web
-console.log(redesSociales.youtube.enlace)
-© 2022 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
+obtenerPersonajes()
